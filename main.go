@@ -32,22 +32,13 @@ func main() {
 			Row_engagement:  Row_engagement,
 		}
 		log.Println(thead)
-		rank := e.ChildText(".rank")
-		contributor := e.ChildText(".contributor")
-		category := e.ChildText(".category")
-		subscribers := e.ChildText(".subscribers")
-		audience := e.ChildText(".audience")
-		authentic := e.ChildText(".authentic")
-		engagement := e.ChildText(".engagement")
-		tbody = models.TableBody{
-			Rank:         rank,
-			Contributtor: contributor,
-			Category:     category,
-			Subscribers:  subscribers,
-			Audience:     audience,
-			Authentic:    authentic,
-			Engagement:   engagement,
-		}
+		tbody.Rank = e.ChildText(".rank")
+		tbody.Contributtor = e.ChildText(".contributor")
+		tbody.Category = e.ChildText(".category")
+		tbody.Subscribers = e.ChildText(".subscribers")
+		tbody.Audience = e.ChildText(".audience")
+		tbody.Authentic = e.ChildText(".authentic")
+		tbody.Engagement = e.ChildText(".engagement")
 		tbodies = append(tbodies, tbody)
 		log.Println(tbody)
 	})
@@ -72,8 +63,8 @@ func main() {
 		"Authentic",
 		"Engagement",
 	}
-	writer.Write(headers)
 	defer writer.Flush()
+	writer.Write(headers)
 	for _, tbody := range tbodies {
 		record := []string{
 			tbody.Rank,
