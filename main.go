@@ -14,7 +14,7 @@ func main() {
 	tbody := models.TableBody{}
 	var tbodies []models.TableBody
 	c := colly.NewCollector()
-	c.OnHTML(".table", func(e *colly.HTMLElement) {
+	c.OnHTML(".row", func(e *colly.HTMLElement) {
 		row_rank := e.ChildText(".row__rank")
 		row_about := e.ChildText(".row__about")
 		row_category := e.ChildText(".row__category")
